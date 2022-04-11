@@ -1309,7 +1309,7 @@ function _GRCRT_Radar() {
                                                     min: 0
                                                 }),
                         sp_player_idle = $("#grcrt_player_idle").spinner({
-                                                    value: 0,
+                                                    value: 2,
                                                     step: 1,
                                                     max: 48,
                                                     min: 0
