@@ -289,7 +289,7 @@ function _GRCRT_Radar() {
         setTimeout(function(){
             checkReload()
         },500)
-        
+
     }
     function hex2rgba(hex,opacity){
         hex = hex.replace('#','');
@@ -394,7 +394,7 @@ function _GRCRT_Radar() {
     function getTownModel(){
         var townModel;
         if(__town == null){
-            var 
+            var
                 __tmp = MM.getModels().Town[Game.townId],
                 chunks = WMap.toChunk(__tmp.get('island_x'),__tmp.get('island_y')).chunk,
                 data = chunk[chunks.x+'_'+chunks.y];
@@ -407,7 +407,7 @@ function _GRCRT_Radar() {
             })
             // return MM.getModels().Town[Game.townId];
         } else {
-            var 
+            var
                 chunks = WMap.toChunk(__town.ix,__town.iy).chunk,
                 data = chunk[chunks.x+'_'+chunks.y];
             $.each(data.towns, function(indt,town){
@@ -448,7 +448,7 @@ function _GRCRT_Radar() {
                                     'name': a.name
                                 })
                                 .replace(/[\u007f-\uffff]/g,
-                                    function(c) { 
+                                    function(c) {
                                       return '\\u'+('0000'+c.charCodeAt(0).toString(16)).slice(-4);
                                     }
                                 )
@@ -575,7 +575,7 @@ function _GRCRT_Radar() {
     this.getTownList = function(){
        return _Tlist;
     }
-    
+
     function generateTime(){
         var
             _curTown,
@@ -589,7 +589,7 @@ function _GRCRT_Radar() {
         _Tlist = {},
         _Tdist = []
         $.each(_tList, function(indTown, elTown){
-            var _dist = Math.floor( 
+            var _dist = Math.floor(
                             $.toe.calc.getDistance(
                                 {'x': elCurTown.abs_x, 'y': elCurTown.abs_y},
                                 {'x': elTown.abs_x, 'y': elTown.abs_y}
@@ -629,7 +629,7 @@ function _GRCRT_Radar() {
         } while (swapped);
         return true;
     }
-        
+
     function displayTownListHeader(){
         var n = DM.getl10n('map');
         function e(a) {
@@ -695,7 +695,7 @@ function _GRCRT_Radar() {
                         sp_town_points.getValue() <= eeT.points
                         &&
                         (
-                            parseFloat(RepConvGRC.idle.JSON[eeT.player_id]) >= sp_player_idle.getValue()
+                            parseFloat(RepConvGRC.idle.JSON[eeT.player_id]) * 24 >= sp_player_idle.getValue()
                             &&
                             ((__player != null) || (__ally != null) || (__town != null) || (rGhostAll.getValue() != 'RGHOST'))
                             ||
@@ -812,7 +812,7 @@ function _GRCRT_Radar() {
                             btoa(
                                 JSON.stringify({"name":eeT.player_name,"id":eeT.player_id})
                                     .replace(/[\u007f-\uffff]/g,
-                                        function(c) { 
+                                        function(c) {
                                           return '\\u'+('0000'+c.charCodeAt(0).toString(16)).slice(-4);
                                         }
                                     )
@@ -892,7 +892,7 @@ function _GRCRT_Radar() {
         // _scrollBar();
         pagination();
     }
-    
+
     function whatFinder(){
         if (__player != null) {
             return '<img src="' + Game.img() + '/game/icons/player.png" />' +
@@ -900,7 +900,7 @@ function _GRCRT_Radar() {
                                     btoa(
                                         JSON.stringify({"name":__player.name,"id":__player.id})
                                             .replace(/[\u007f-\uffff]/g,
-                                                function(c) { 
+                                                function(c) {
                                                   return '\\u'+('0000'+c.charCodeAt(0).toString(16)).slice(-4);
                                                 }
                                             )
@@ -948,9 +948,9 @@ function _GRCRT_Radar() {
 
     function header(){
         cbx_meteorology = genCheckBox('grcrt_rr_meteorology', (__town==null && MM.getModels().Town[Game.townId].getResearches().get('meteorology'))),
-        cbx_cartography = genCheckBox('grcrt_rr_cartography', (__town==null && MM.getModels().Town[Game.townId].getResearches().get('cartography'))), 
-        cbx_set_sail = genCheckBox('grcrt_rr_set_sail', (__town==null && MM.getModels().Town[Game.townId].getResearches().get('set_sail'))), 
-        cbx_unit_movement_boost = genCheckBox('grcrt_rr_unit_movement_boost', false), 
+        cbx_cartography = genCheckBox('grcrt_rr_cartography', (__town==null && MM.getModels().Town[Game.townId].getResearches().get('cartography'))),
+        cbx_set_sail = genCheckBox('grcrt_rr_set_sail', (__town==null && MM.getModels().Town[Game.townId].getResearches().get('set_sail'))),
+        cbx_unit_movement_boost = genCheckBox('grcrt_rr_unit_movement_boost', false),
         cbx_lighthouse = genCheckBox('grcrt_rr_lighthouse', (__town==null && MM.getModels().Town[Game.townId].getBuildings().get('lighthouse')==1));
         hero_picker = (GameDataHeroes.areHeroesEnabled())
                         ? $('<div/>',{'class':'modifier hero_modifier', 'style':'margin-right: 0px; margin-top: 1px;'})
@@ -1144,7 +1144,7 @@ function _GRCRT_Radar() {
             'action' : "GRCRT_Radar.windowOpen();",
             'class' : 'radar'
         }
-    
+
     // ikona w menu
     $('head')
         .append(
@@ -1226,7 +1226,7 @@ function _GRCRT_Radar() {
     // obsługa nowych okien
     RepConv.initArray.push('GRCRT_Radar.init()');
     RepConv.wndArray.push(_IdS);
-    
+
     this.init = function(){
         "use strict";
         new _grcrtWindowRadar();
@@ -1311,7 +1311,7 @@ function _GRCRT_Radar() {
                         sp_player_idle = $("#grcrt_player_idle").spinner({
                                                     value: 0,
                                                     step: 1,
-                                                    max: 999,
+                                                    max: 48,
                                                     min: 0
                                                 });
                         dd_town_lists = $("#grcrt_town_lists").dropdown({
@@ -1377,7 +1377,7 @@ function _GRCRT_Radar() {
                         this.getWindowModel().showLoading(),
                         this.unregisterComponent("grcrt_radar_scrollbar"),
                         displayTownList(),
-                        this.registerComponent("grcrt_radar_scrollbar", 
+                        this.registerComponent("grcrt_radar_scrollbar",
                             this.$el.find(".js-scrollbar-viewport").skinableScrollbar({
                                 orientation: "vertical",
                                 template: "tpl_skinable_scrollbar",

@@ -16,8 +16,8 @@ try {
 
 
 var outFile = './dist/'+pjson.grcrtdata.file+'.user.js';
-var metaFile = './meta/'+pjson.grcrtdata.file+'.meta.js'; 
-var metaDist = './dist/'+pjson.grcrtdata.file+'.meta.js'; 
+var metaFile = './meta/'+pjson.grcrtdata.file+'.meta.js';
+var metaDist = './dist/'+pjson.grcrtdata.file+'.meta.js';
 
 try {
   fs.unlinkSync(outFile);

@@ -6,8 +6,6 @@
 // @include      https://*.grepolis.com/game/*
 // @exclude      view-source://*
 // @exclude      https://classic.grepolis.com/game/*
-// @updateURL    https://{GRCRT_URL}/scripts/GrepolisReportConverterV2.meta.js
-// @downloadURL  https://{GRCRT_URL}/scripts/GrepolisReportConverterV2.user.js
 // @icon         https://cdn.grcrt.net/img/octopus.png
 // @iconURL      https://cdn.grcrt.net/img/octopus.png
 // @version      {GRCRT_VERSION}
