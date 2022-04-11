@@ -1,6 +1,6 @@
 {
   "name": "grcrt",
-  "version": "1",
+  "version": "5.2.0",
   "description": "GRCRTools",
   "main": "GrepolisReportConverterV2.user.js",
   "author": "Potusek, anpu",
